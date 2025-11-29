@@ -1,5 +1,12 @@
 <?php
-$best_sellers = ['Kitkat', 'Ferrero', 'Tobleron', 'Mik Mik'];
+$product_sales = [
+    'Kitkat' => 5,
+    'Ferrero' => 9,
+    'Tobleron' => 3,
+    'Mik Mik' => 7
+];
+
+$feature_item = 'Ferrero';
 ?>
 
 <!DOCTYPE html>
@@ -7,17 +14,44 @@ $best_sellers = ['Kitkat', 'Ferrero', 'Tobleron', 'Mik Mik'];
 <html>
 <head>
     <link rel="stylesheet" href="styles.css">
-    <title>Foreach Candy</title>
+    <title>For each Candy</title>
 </head>
 <body>
 
 <h1>Sweet Harmony Candy Store</h1>
 
-<h2>Best Sellers</h2>
+<h2>Best Sellers and Sales Tracking</h2>
 <ul>
-<?php foreach($best_sellers as $candy): ?>
-    <li><?= $candy ?></li>
+
+<?php
+foreach($product_sales as $candy_name => $sales_count): 
+?>
+    
+    <?php 
+    if ($candy_name === $feature_item): 
+    ?>
+        <li class="offer">
+            ** Special Feature: <?= $candy_name ?>** (<?= $sales_count ?> sold)
+            <br>
+            <span style="font-weight: normal; font-size: 0.9em;">Sales Trend: </span>
+            
+    <?php else: ?>
+        <li>
+            **<?= $candy_name ?>** (<?= $sales_count ?> sold)
+            <br>
+            <span style="font-weight: normal; font-size: 0.9em;">Sales Trend: </span>
+    <?php endif; ?>
+        
+        <?php 
+        for ($i = 1; $i <= $sales_count; $i++): 
+        ?>
+            <span style="color: #fcba63;">★</span>
+        <?php endfor; ?>
+        
+        </li>
+
 <?php endforeach; ?>
+
 </ul>
 
 <?php include 'footer.php'; ?>
