@@ -19,5 +19,5 @@
         <a href="foreach.php">foreach</a>
         <a href="for-loop.php">for-loop</a>
         <a href="match.php">match</a>
+        <a href="new.php">Stock Monitor</a>
     </nav>
-
